@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { ReactElement } from 'react';
 
-// import { colors } from '../utils/colors';
+ import { colors } from '../utils/colors';
 
 export type CardProps = {
     name: string,
@@ -19,7 +19,8 @@ const Li = styled.li`
     align-items: center;
     justify-content: space-between;
     border-radius: 18px;
-    background-color: flying; 
+    /* TODO: fix bg colors by type*/
+    background-color: ${colors["flying"]}; 
     &:hover {
         z-index: 100;
         transform: translateY(-15px);
@@ -44,7 +45,6 @@ const PokemonName = styled.p`
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
 `;
-    // background-color:#e5ffff;
 
 const Card = ({name, id}: CardProps, ...resto: number[]|string[]): ReactElement => {
     const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;

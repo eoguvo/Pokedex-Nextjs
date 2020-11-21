@@ -5,21 +5,15 @@ export const Ul = styled.ul`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(5, auto);
-  margin-left: 50%;
-  transform: translateX(-50%);
+  /* margin-left: 50%;
+  transform: translateX(-65%); */
   margin-right: auto;
     @media(max-width: 1000px) {
       grid-template-columns: repeat(auto-fill, 160px);
-      margin: 0;
     }
 `;
 
 export const Title = styled.h1`
-  color: black;
-  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-family: 'Nunito', sans-serif;
   margin-top: 0;
   height: 64px;
   display: flex;
@@ -28,7 +22,6 @@ export const Title = styled.h1`
   position: relative;
   align-items: center;
   z-index: 100;
-  color: #cccccc;
   :before {
     content: '';
     position: absolute;
@@ -38,3 +31,8 @@ export const Title = styled.h1`
     z-index: -1;
   }
 `;
+
+export const PokemonList = styled.div`
+  margin-left: 50%;
+  transform: translateX(-50%);
+`

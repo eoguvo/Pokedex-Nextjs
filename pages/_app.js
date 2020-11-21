@@ -9,8 +9,7 @@ const theme = {
 }
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@400;700&display=swap');
-  body {
+    body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
