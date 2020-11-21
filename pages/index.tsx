@@ -5,13 +5,15 @@ import Card from '../components/Card';
 import { Ul, Title } from '../styles/index';
 
 type pokemonApiTypes = {
-    entry_number: int,
-    pokemon_species : {
-        name: string,
-    }
+    pokemons: [{
+        entry_number: number,
+        pokemon_species : {
+            name: string,
+        }
+    }]
 }
 
-const Home = ({pokemons}: pokemonApiTypes): react.ReactElement => {
+const Home = ({pokemons}: pokemonApiTypes): React.ReactElement => {
     return (
         <>
         <Title>Pokedex</Title>
@@ -32,7 +34,7 @@ const Home = ({pokemons}: pokemonApiTypes): react.ReactElement => {
     )
 }
 
-export async function getStaticProps(): pokemonApiTypes {
+export async function getStaticProps(): Promise<unknown> {
         const url = "https://pokeapi.co/api/v2/pokedex/2/"
         const pokemons = await fetch(url)
         .then(response=>{

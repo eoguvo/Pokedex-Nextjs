@@ -1,4 +1,4 @@
-export const colors = {
+export const colors: unknown = {
     bug: '#adbd21',
     dragon: '#8a75ea', 
     electric: '#ffc631', 

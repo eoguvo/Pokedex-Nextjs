@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import { colors } from '../utils/colors';
+import { ReactElement } from 'react';
+
+// import { colors } from '../utils/colors';
 
 export type CardProps = {
     name: string,
     id: number,
-    type: string[],
 }
 
 const Li = styled.li`
@@ -18,7 +19,7 @@ const Li = styled.li`
     align-items: center;
     justify-content: space-between;
     border-radius: 18px;
-    background-color: ${props=>colors[props.type != undefined ? props.type : "flying"]};
+    background-color: flying; 
     &:hover {
         z-index: 100;
         transform: translateY(-15px);
@@ -45,10 +46,10 @@ const PokemonName = styled.p`
 `;
     // background-color:#e5ffff;
 
-const Card = ({name, id, type}: CardProps, ...resto: int|string[]): jsx => {
+const Card = ({name, id}: CardProps, ...resto: number[]|string[]): ReactElement => {
     const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
     return (
-        <Li type={type} {...resto}>
+        <Li {...resto}>
             <Image src={spriteUrl} />    
             <PokemonName>
                 {name}
