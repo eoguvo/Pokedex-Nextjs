@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import useSwr from 'swr';
 
 import { ReactElement } from 'react';
 
@@ -19,8 +20,7 @@ const Li = styled.li`
     align-items: center;
     justify-content: space-between;
     border-radius: 18px;
-    /* TODO: fix bg colors by type*/
-    background-color: ${colors["flying"]}; 
+    background-color: ${(props)=>colors[props.type || "flying"]};; 
     &:hover {
         z-index: 100;
         transform: translateY(-15px);
@@ -46,15 +46,24 @@ const PokemonName = styled.p`
     font-weight: bold;
 `;
 
+const Fetcher = url => fetch(url).then(res=>res.json());
+
 const Card = ({name, id}: CardProps, ...resto: number[]|string[]): ReactElement => {
     const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    const { data, error, isValidating } = useSwr(`https://pokeapi.co/api/v2/pokemon/${name}`, Fetcher);
     return (
-        <Li {...resto}>
-            <Image src={spriteUrl} />    
-            <PokemonName>
-                {name}
-            </PokemonName>
-        </Li>
+        <>
+            {isValidating ? <p>Loading resources...</p> : ''}
+            {error ? <p>Ops! Something went wrong</p> : ''}
+            <Li {...resto} type={
+                data ? data.types[0].type.name : undefined
+            }>
+                <Image src={spriteUrl} />    
+                <PokemonName>
+                    {name}
+                </PokemonName>
+            </Li>
+        </>
     )
 }
 
