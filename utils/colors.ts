@@ -1,4 +1,7 @@
-export const colors: unknown = {
+type Colors = {
+    [key: string]: string;
+}
+export const colors: Colors = {
     bug: '#adbd21',
     dragon: '#8a75ea', 
     electric: '#ffc631', 
