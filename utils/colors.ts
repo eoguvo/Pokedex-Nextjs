@@ -5,6 +5,7 @@ export const colors: Colors = {
     bug: '#adbd21',
     dragon: '#8a75ea', 
     electric: '#ffc631', 
+    fairy: '#d788da',
     fighting: '#a55239', 
     fire: '#f75636', 
     flying: '#9cadf7', 

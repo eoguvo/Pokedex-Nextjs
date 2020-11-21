@@ -10,7 +10,7 @@ export type CardProps = {
     id: number,
 }
 
-const Li = styled.li`
+const Li = styled.li<{type: string;}>`
     width: 160px;
     height: 240px;
     list-style: none;
@@ -20,11 +20,11 @@ const Li = styled.li`
     align-items: center;
     justify-content: space-between;
     border-radius: 18px;
-    background-color: ${(props)=>colors[props.type || "flying"]};; 
+    background-color: ${(props)=>colors[props.type || "fairy"]}; 
     &:hover {
         z-index: 100;
         transform: translateY(-15px);
-        box-shadow: 5px 5px 10px 0 black;
+        box-shadow: 0 0 48px 0 ${(props)=>colors[props.type || "fairy"]};
         cursor: pointer;
     }
 `
@@ -46,11 +46,26 @@ const PokemonName = styled.p`
     font-weight: bold;
 `;
 
-const Fetcher = url => fetch(url).then(res=>res.json());
+const Fetcher = (url: string): unknown => fetch(url).then(res=>res.json());
+
+type Data = {
+    data?: {
+        types?: [{
+            type: {
+                name: string,
+            }
+        }]
+    },
+    error?: boolean,
+    isValidating?: boolean
+}
 
 const Card = ({name, id}: CardProps, ...resto: number[]|string[]): ReactElement => {
     const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-    const { data, error, isValidating } = useSwr(`https://pokeapi.co/api/v2/pokemon/${name}`, Fetcher);
+    const { data, error, isValidating }: Data = useSwr(`https://pokeapi.co/api/v2/pokemon/${name}`, Fetcher);
+    if(data && data.types[0].type.name == "fairy") {
+        console.log(data)
+    }
     return (
         <>
             {isValidating ? <p>Loading resources...</p> : ''}

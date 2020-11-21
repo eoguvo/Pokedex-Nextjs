@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "sourceMap": true,
     "target": "es5",
     "lib": [

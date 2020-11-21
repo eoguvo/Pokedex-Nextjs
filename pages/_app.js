@@ -4,7 +4,7 @@ import { AppProps } from 'next/app'
 
 const theme = {
   colors: {
-    primary: '#fdfbd2',
+    primary: '#fff',
   },
 }
 
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #fdfbd2;
+    background-color: #f0f5fe;
   }
 `
 
